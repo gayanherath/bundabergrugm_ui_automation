@@ -13,6 +13,12 @@ public class Constants {
     public static final String AGE_VERIFICATION_MESSAGE_FOR_MINOR_AGE="Sorry, your age or location does not permit you to enter at this time.";
     public static final String AGE_MISSING_MESSAGE="Please enter your date of birth";
     public static final String WELCOME_LOGO_ATTRIBUTE_TITLE_VALUE="Welcome to Bundaberg";
+    public static final String INPUT_REQUIRED_MESSAGE="This is a required field.";
+    public static final String INVALID_LOGIN_CREDENTIALS="Invalid login or password.";
+    public static final String INAVLID_EMAIL_STRUCTURE_MESSAGE="Please enter a valid email address. For example johndoe@domain.com.";
+
+    public static final String USER_NAME="williamjacob802@gmail.com";
+    public static final String P_W="12345678";
 
 
 }

@@ -47,7 +47,6 @@ public class AgeVerificationTest extends TestBase {
 
     @Test(description = "TC-4",priority = 4)
     public void testVerifyAge25AsValidRangeFromCurrentDate(){
-        Homepage.loadHomePage();
         String date = DateUtils.getPastOrFutureDate(-25,0);
         String[] dateSplit = date.split(" ");
         String day = dateSplit[0].replaceFirst("^0+(?!$)", "");

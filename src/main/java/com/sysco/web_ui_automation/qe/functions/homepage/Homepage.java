@@ -35,6 +35,10 @@ public class Homepage {
 
     }
 
+    public static void loadMyAccountPage(){
+        homepagePage.loadMyAccount();
+    }
+
 
     public static void quiteDriver() {
         homepagePage.quitDriver();

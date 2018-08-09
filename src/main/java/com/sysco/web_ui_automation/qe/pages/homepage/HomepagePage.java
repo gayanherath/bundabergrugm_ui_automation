@@ -12,7 +12,7 @@ public class HomepagePage {
     protected static SyscoLabUI syscoLabUI;
 
     private By lnkHomepageLogo=By.xpath("/html/body/div[3]/div[1]/div[2]/div[2]/a[1]");
-
+    private By lnkMyAccountPage=By.xpath("//*[@id=\"quick-access-list\"]/li[1]/ul/li[2]/ul/li/a");
 
     public static void loadHomepagePage(Capabilities capabilities, String url) {
         syscoLabUI = new SyscoLabWUI(capabilities);
@@ -34,7 +34,12 @@ public class HomepagePage {
     public void refreshBrowser(){
         syscoLabUI.sleep(2);
         syscoLabUI.refreshBrowser();
-        syscoLabUI.sleep(5);
+        syscoLabUI.sleep(3);
+    }
+
+    public void loadMyAccount(){
+        syscoLabUI.sleep(3);
+        syscoLabUI.click(lnkMyAccountPage);
     }
 
 
