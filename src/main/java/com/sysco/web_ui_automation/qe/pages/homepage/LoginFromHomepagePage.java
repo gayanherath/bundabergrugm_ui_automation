@@ -81,7 +81,7 @@ public class LoginFromHomepagePage extends HomepagePage{
         syscoLabUI.sendKeys(txtPassword,password);
     }
 
-    public void refreshBrowser(){
+    public void refreshBrowserForSlowCase(){
         syscoLabUI.refreshBrowser();
         syscoLabUI.sleep(2);
     }

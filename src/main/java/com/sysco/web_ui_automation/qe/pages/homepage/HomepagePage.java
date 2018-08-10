@@ -31,10 +31,15 @@ public class HomepagePage {
 
     }
 
-    public void refreshBrowser(){
+    public void refreshBrowserForSlowCase(){
         syscoLabUI.sleep(2);
         syscoLabUI.refreshBrowser();
         syscoLabUI.sleep(3);
+    }
+
+    public void refreshBrowser(){
+        syscoLabUI.refreshBrowser();
+        syscoLabUI.sleep(2);
     }
 
     public void loadMyAccount(){

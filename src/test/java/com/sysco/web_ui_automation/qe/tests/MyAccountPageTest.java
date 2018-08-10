@@ -1,12 +1,9 @@
 package com.sysco.web_ui_automation.qe.tests;
-import com.sysco.web_ui_automation.qe.functions.myaccount.MyAccount;
+import com.sysco.web_ui_automation.qe.functions.myaccount.*;
 import com.sysco.web_ui_automation.qe.common.Constants;
 import com.sysco.web_ui_automation.qe.functions.homepage.AgeVerificationFromHomepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.LoginFromHomepage;
-import com.sysco.web_ui_automation.qe.functions.myaccount.PineappleCocountTropicFromRLCategory;
-import com.sysco.web_ui_automation.qe.functions.myaccount.RoyalLiqueurCategoryFromMyAccount;
-import com.sysco.web_ui_automation.qe.functions.myaccount.ShoppingCart;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
@@ -60,15 +57,32 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-  /*  @Test(description = "TC-3",priority = 3)
+    @Test(description = "TC-3",priority = 3)
     public void testVerifyUserCanGoToCheckoutPageClickingProceedToCheckOut(){
-        LoginFromHomepage.refreshPage();
-        MyAccount.clickCart();
-        MyAccount.clickChechOutButton();
-        String pageTitle=ShoppingCart.getPageTitle();
-        softAssert.assertEquals(pageTitle,"Shopping Cart","Invalid Page is loaded");
+        ShoppingCart.clickProceedToCheckOut();
+
+        String pageTitle=Checkout.getPageTitle();
+        softAssert.assertEquals(pageTitle,"Checkout","Invalid Page is loaded");
+
+        String firstName=Checkout.getFirstName();
+        String lastName=Checkout.getLastName();
+        softAssert.assertEquals(firstName,"william","Invalid First Name");
+        softAssert.assertEquals(lastName,"jacob","Invalid Last Name");
         softAssert.assertAll();
-    }*/
+
+    }
+
+
+
+    @Test(description = "TC-4",priority = 4)
+    public void testVerifyUserCanGotoBillingAndShippingInfoWhenClickProceedToCheckout(){
+        Checkout.refreshBrowser();
+        Checkout.clickContinueToDelivery();
+
+        String getDeliverOptionsHeader=Checkout.getDeliveryOptionHeaderText();
+        softAssert.assertEquals(getDeliverOptionsHeader,"DELIVERY OPTIONS");
+        softAssert.assertAll();
+    }
 
 
 

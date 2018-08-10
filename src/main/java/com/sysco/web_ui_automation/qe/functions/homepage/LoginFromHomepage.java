@@ -60,7 +60,7 @@ public class LoginFromHomepage {
     }
 
     public static void refreshPage(){
-        myAccountFromHomepagePage.refreshBrowser();
+        myAccountFromHomepagePage.refreshBrowserForSlowCase();
     }
 
     public static String getUserName(){

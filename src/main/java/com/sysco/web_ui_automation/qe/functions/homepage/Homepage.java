@@ -31,7 +31,7 @@ public class Homepage {
 
     public static void loadAgeVerificationPopUp(){
         homepagePage.removeCookies();
-        homepagePage.refreshBrowser();
+        homepagePage.refreshBrowserForSlowCase();
 
     }
 

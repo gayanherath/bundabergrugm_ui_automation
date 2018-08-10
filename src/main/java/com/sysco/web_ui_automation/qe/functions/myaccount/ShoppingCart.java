@@ -12,4 +12,10 @@ public class ShoppingCart {
         return pageTitle;
     }
 
+    public static void clickProceedToCheckOut(){
+        shoppingCartPage.clickProceedToCheckOut();
+    }
+
+
+
 }
