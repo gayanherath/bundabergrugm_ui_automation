@@ -13,6 +13,8 @@ public class MyAccountPage extends HomepagePage {
     private By lblEmptyCart=By.className("cart-empty");
     private By lnkRemove=By.className("btn-remove");
     private By lnkFirstRemove=By.xpath("//*[@id=\"mini-cart\"]/li[1]/div/div/a[2]");
+    private By drpDwnProducts=By.xpath("//*[@id=\"nav-wrapper\"]/div/ul[1]/li[1]/a");
+    private By lnkRoyalLiqueurCategory=By.xpath("//*[@id=\"nav-wrapper\"]/div/div[4]/div[1]/div[1]/ul/li/ul/li[2]/a");
 
     public void clickCart(){
         syscoLabUI.click(lnkCart);
@@ -40,4 +42,11 @@ public class MyAccountPage extends HomepagePage {
         clickCart();
         checkCartItems();
     }
+
+    public void selectRoyalLiqueurCategory(){
+        syscoLabUI.click(drpDwnProducts);
+        syscoLabUI.selectFromDropDown(lnkRoyalLiqueurCategory,);
+    }
+
+
 }
