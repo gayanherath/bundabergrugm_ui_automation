@@ -39,7 +39,6 @@ public class Homepage {
         homepagePage.loadMyAccount();
     }
 
-
     public static void quiteDriver() {
         homepagePage.quitDriver();
     }

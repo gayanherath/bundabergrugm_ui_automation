@@ -16,4 +16,18 @@ public class MyAccount {
     public static void clearCart() throws AWTException {
         myAccountPage.checkCartItems();
     }
+    public static String getItemNameFromCart(){
+        String itemName=myAccountPage.getItemNameFromCart();
+        return itemName;
+    }
+
+    public static String getItemPriceFromCart(){
+        String itemPrice=myAccountPage.getItemPriceFromCart();
+        return itemPrice;
+    }
+
+    public static void clickChechOutButton(){
+        myAccountPage.clickCheckOutButton();
+    }
+
 }

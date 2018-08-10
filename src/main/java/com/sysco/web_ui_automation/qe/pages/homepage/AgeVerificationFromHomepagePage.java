@@ -34,5 +34,4 @@ public class AgeVerificationFromHomepagePage extends HomepagePage {
         return ageVerificationMessage;
     }
 
-
 }

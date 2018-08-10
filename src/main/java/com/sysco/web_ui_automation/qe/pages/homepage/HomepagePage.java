@@ -49,5 +49,10 @@ public class HomepagePage {
         }
     }
 
+    public String getTitle(){
+        String pageTitle=syscoLabUI.getTitle();
+        return  pageTitle;
+    }
+
 
 }
