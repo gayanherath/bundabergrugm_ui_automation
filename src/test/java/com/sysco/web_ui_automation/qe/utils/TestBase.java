@@ -15,7 +15,7 @@ import org.testng.asserts.SoftAssert;
 @Listeners(SyscoLabListener.class)
 public class TestBase {
     private SyscoLabListener testListeners;
-    private SyscoLabQCenter syscoLabQCenter;
+    protected SyscoLabQCenter syscoLabQCenter;
     protected SoftAssert softAssert;
 
     @BeforeClass

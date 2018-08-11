@@ -5,18 +5,23 @@ import com.sysco.web_ui_automation.qe.functions.homepage.AgeVerificationFromHome
 import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.sysco.web_ui_automation.qe.utils.DateUtils;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
+import com.syscolab.qe.core.reporting.SyscoLabListener;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(SyscoLabListener.class)
 public class AgeVerificationTest extends TestBase {
 
     @BeforeClass
     public void init(ITestContext iTestContext) {
-        iTestContext.setAttribute("feature", "Homepage - ValidLogin");
+        syscoLabQCenter.setModule("report_Gayan");
+        iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
+        syscoLabQCenter.setClassName(AgeVerificationTest.class.getName());
     }
 
-    @Test(description = "TC-1",priority = 1)
+    @Test(description = "TC-AgeVerification-1",priority = 1)
     public void testVerifyErrorMessageForNoValuesForAge(){
         Homepage.loadHomePage();
         String ageMissingMessage=AgeVerificationFromHomepage.getAgeMissingMessageForNoInput();
@@ -24,14 +29,14 @@ public class AgeVerificationTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-2",priority = 2)
-    public void testVerifyErrorMessageForAge24FromYear(){
+    @Test(description = "TC-AgeVerification-2",priority = 2)
+    public void testVerifyErrorMessageForAge24ByYear(){
         String ageVerificationMessageForMinorAge=AgeVerificationFromHomepage.getAgeVerificationMessageForMinorAge("1","January","1994");
         softAssert.assertEquals(ageVerificationMessageForMinorAge,Constants.AGE_VERIFICATION_MESSAGE_FOR_MINOR_AGE,"Invalid Verification Message");
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-3",priority = 3)
+    @Test(description = "TC-AgeVerification-3",priority = 3)
     public void testVerifyErrorMessageForAge24FromCurrentDate(){
         String date = DateUtils.getPastOrFutureDate(-25,1);
         String[] dateSplit = date.split(" ");
@@ -45,8 +50,8 @@ public class AgeVerificationTest extends TestBase {
 
     }
 
-    @Test(description = "TC-4",priority = 4)
-    public void testVerifyAge25AsValidRangeFromCurrentDate(){
+    @Test(description = "TC-AgeVerification-4",priority = 4)
+    public void testVerifyAge25IsValidFromCurrentDate(){
         String date = DateUtils.getPastOrFutureDate(-25,0);
         String[] dateSplit = date.split(" ");
         String day = dateSplit[0].replaceFirst("^0+(?!$)", "");
@@ -59,8 +64,8 @@ public class AgeVerificationTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-5",priority = 5)
-    public void testVerifyAge25AsValidRangeFromYear(){
+    @Test(description = "TC-AgeVerification-5",priority = 5)
+    public void testVerifyAge25IsValidByYear(){
         Homepage.loadAgeVerificationPopUp();
         AgeVerificationFromHomepage.enterValidRequiredAgeLevel("1","January","1991");
         String titleAttributeValueHomepageLogoLink=Homepage.getTitleAtributeValueOfHomepageLogoLink();

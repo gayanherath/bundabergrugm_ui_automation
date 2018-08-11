@@ -13,7 +13,7 @@ public class LoginTest extends TestBase {
 
     @BeforeClass
     public void init(ITestContext iTestContext) {
-        iTestContext.setAttribute("feature", "Homepage - ValidLogin");
+        iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
     }
 
     @BeforeClass
