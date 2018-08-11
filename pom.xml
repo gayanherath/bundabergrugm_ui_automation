@@ -59,8 +59,8 @@
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
                             <encoding>UTF-8</encoding>
-                            <source>1.7</source>
-                            <target>1.7</target>
+                            <source>1.8</source>
+                            <target>1.8</target>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -70,7 +70,7 @@
                         <configuration>
                             <testFailureIgnore>true</testFailureIgnore>
                             <suiteXmlFiles>
-                                <suiteXmlFile>./src/test/${suite}.xml</suiteXmlFile>
+                                <suiteXmlFile>./src/test/${suite}</suiteXmlFile>
                             </suiteXmlFiles>
                             <forkMode>never</forkMode>
                             <systemProperties>
