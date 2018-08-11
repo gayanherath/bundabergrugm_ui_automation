@@ -72,18 +72,80 @@ public class MyAccountPageTest extends TestBase {
 
     }
 
-
-
-    @Test(description = "TC-4",priority = 4)
-    public void testVerifyUserCanGotoBillingAndShippingInfoWhenClickProceedToCheckout(){
-        Checkout.refreshBrowser();
+    @Test(description = "TC-MyAccountPageTest-4",priority = 4)
+    public void testVerifyUserCanNotContinueWithoutMandatoryInputFieldsinCheckout(){
+        Checkout.clearMandatoryFields();
         Checkout.clickContinueToDelivery();
 
-        String getDeliverOptionsHeader=Checkout.getDeliveryOptionHeaderText();
-        softAssert.assertEquals(getDeliverOptionsHeader,"DELIVERY OPTIONS");
+        String firstNameFieldRequiredMessage=Checkout.getFirstNameRequiredErrorMessage();
+        softAssert.assertEquals(firstNameFieldRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Invalid Error Message");
+
+        String lastNameRequiredMessage=Checkout.getLastNameeRequiredErrorMessage();
+        softAssert.assertEquals(lastNameRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Invalid Error Message");
+
+        String address1FieldRequiredMessage=Checkout.getAddress1RequiredErrorMessage();
+        softAssert.assertEquals(address1FieldRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Invalid Error Message");
+
+        String postCodeFieldRequiredMessage=Checkout.getPostCodeRequiredErrorMessage();
+        softAssert.assertEquals(postCodeFieldRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Invalid Error Message");
+
+        String contactNumberRequiredMessage=Checkout.getContactNumberRequiredErrorMessage();
+        softAssert.assertEquals(contactNumberRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Invalid Error Message");
+
         softAssert.assertAll();
     }
 
+    @Test(description = "TC-MyAccountPageTest-5",priority = 5)
+    public void testVerifyUserCanAddPostCodeWithAutoSuggestion() throws AWTException {
+        Checkout.refreshBrowser();
+        Checkout.clearPostCodeField();
+        Checkout.enter2000AndSelectSecondOneFromSuggestionList();
+
+        String postCode=Checkout.getPostCodeText();
+        softAssert.assertEquals(postCode,"2000 DAWES POINT NSW","Invalid Post Code is selected");
+        softAssert.assertAll();
+    }
+
+
+    @Test(description = "TC-MyAccountPageTest-6",priority = 6)
+    public void testVerifyUserCanGotoBillingAndShippingInfoWhenClickProceedToCheckout(){
+        Checkout.clickContinueToDelivery();
+        String getDeliverOptionsHeader=Checkout.getDeliveryOptionHeaderText();
+        softAssert.assertEquals(getDeliverOptionsHeader,"DELIVERY OPTIONS","Invalid Header");
+        softAssert.assertTrue(Checkout.isCheckoutAuthorizedTrue(),"Checkout Authorization Check box is not marked");
+        softAssert.assertAll();
+    }
+
+    /*@Test(description = "TC-MyAccountPageTest-7",priority = 7)
+    public void testUserIsNotAbleToProceedWithEmptyCCAndCVV(){
+        Checkout.clickContinueToPayment();
+        Checkout.clickCreditCardOption();
+        Checkout.clickPurchaseMyOrder();
+
+        String inputRequiredErrorMessageCC=Checkout.getInputRequiredFieldCreditCard();
+        String inputRequiredErrorMessageCVV=Checkout.getInputRequiredFieldCVV();
+        softAssert.assertEquals(inputRequiredErrorMessageCC,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        softAssert.assertEquals(inputRequiredErrorMessageCVV,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        softAssert.assertAll();
+    }
+
+    @Test(description = "TC-MyAccountPageTest-8",priority = 8)
+    public void testUserIsNotAbleToProceedWithInvalidAnd8DigitCCInputAndIncorrectCVV(){
+        Checkout.setCreditCardNumber("12345678");
+        Checkout.setCVV("321");
+        Checkout.clickPurchaseMyOrder();
+
+        String inputRequiredErrorMessageCC=Checkout.getInputRequiredFieldCreditCard();
+        String inputRequiredErrorMessageCVV=Checkout.getInputRequiredFieldCVV();
+        softAssert.assertEquals(inputRequiredErrorMessageCC,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        softAssert.assertEquals(inputRequiredErrorMessageCVV,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        softAssert.assertAll();
+    }*/
+
+   /* @Test(description = "TC-MyAccountPageTest-9",priority = 9)
+    public void testUserIsNotAbleToProceedWithInvalidAnd16DigitCCAndIncorrectCVV(){
+
+    }*/
 
 
 
