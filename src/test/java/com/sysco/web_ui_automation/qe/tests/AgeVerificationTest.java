@@ -7,6 +7,7 @@ import com.sysco.web_ui_automation.qe.utils.DateUtils;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
 import com.syscolab.qe.core.reporting.SyscoLabListener;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -72,5 +73,10 @@ public class AgeVerificationTest extends TestBase {
         softAssert.assertEquals(titleAttributeValueHomepageLogoLink, Constants.WELCOME_LOGO_ATTRIBUTE_TITLE_VALUE,"Invalid Link Title Value");
         softAssert.assertAll();
 
+    }
+
+    @AfterClass
+    public void quitDriver(){
+        Homepage.quiteDriver();
     }
 }

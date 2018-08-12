@@ -31,6 +31,7 @@ public class TestBase {
         this.softAssert = new SoftAssert();
     }
 
+
     @AfterClass(alwaysRun = true)
     public void cleanUp(ITestContext iTestContext) {
         try {

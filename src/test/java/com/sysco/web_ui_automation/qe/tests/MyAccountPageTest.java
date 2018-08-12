@@ -117,7 +117,7 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-    /*@Test(description = "TC-MyAccountPageTest-7",priority = 7)
+    @Test(description = "TC-MyAccountPageTest-7",priority = 7)
     public void testUserIsNotAbleToProceedWithEmptyCCAndCVV(){
         Checkout.clickContinueToPayment();
         Checkout.clickCreditCardOption();
@@ -141,12 +141,12 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertEquals(inputRequiredErrorMessageCC,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
         softAssert.assertEquals(inputRequiredErrorMessageCVV,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
         softAssert.assertAll();
-    }*/
+    }
 
-   /* @Test(description = "TC-MyAccountPageTest-9",priority = 9)
+    @Test(description = "TC-MyAccountPageTest-9",priority = 9)
     public void testUserIsNotAbleToProceedWithInvalidAnd16DigitCCAndIncorrectCVV(){
 
-    }*/
+    }
 
 
 

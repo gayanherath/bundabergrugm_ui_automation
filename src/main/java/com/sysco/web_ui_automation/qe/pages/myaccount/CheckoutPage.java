@@ -101,10 +101,12 @@ public class CheckoutPage  extends HomepagePage {
     }
 
     public String getInputRequiredFieldCreditCard(){
+        syscoLabUI.sleep(2);
         return getLblText(lblCreditCardInputRequiredValidationError);
     }
 
     public String getInputRequiredFieldCVV(){
+        syscoLabUI.sleep(2);
         return getLblText(lblCVVInputRequiredValidationError);
     }
 
@@ -132,7 +134,11 @@ public class CheckoutPage  extends HomepagePage {
     }
 
     public void clickCreditCardPaymentMethodRadioButton(){
+        syscoLabUI.sleep(1);
+        syscoLabUI.mouseHover(rdBtnCreditCardPaymentMethod);
+        syscoLabUI.sleep(1);
         syscoLabUI.click(rdBtnCreditCardPaymentMethod);
+        syscoLabUI.sleep(1);
     }
 
     public void clickPurchaseMyOrderButton(){
