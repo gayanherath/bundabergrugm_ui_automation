@@ -5,13 +5,15 @@ import com.sysco.web_ui_automation.qe.functions.homepage.AgeVerificationFromHome
 import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.LoginFromHomepage;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
+import com.syscolab.qe.core.reporting.SyscoLabListener;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.awt.*;
 
+@Listeners(SyscoLabListener.class)
 public class MyAccountPageTest extends TestBase {
 
     @BeforeClass
