@@ -93,6 +93,10 @@ public class Checkout {
         return checkoutPage.getInputRequiredFieldCVV();
     }
 
+    public static String getValidRequiredCCErrorMessage(){
+        return checkoutPage.getValidCCRequiredErrorMessage();
+    }
+
     public static void setCreditCardNumber(String creditCard){
         checkoutPage.setCreditCardNumber(creditCard);
     }

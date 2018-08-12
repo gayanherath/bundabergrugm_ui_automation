@@ -1,5 +1,6 @@
 package com.sysco.web_ui_automation.qe.utils;
 
+import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.syscolab.qe.core.reporting.SyscoLabListener;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
@@ -30,7 +31,10 @@ public class TestBase {
         System.out.println("Test Running " + this.getClass().toString());
         this.softAssert = new SoftAssert();
     }
-
+    @AfterClass
+    public void quitDriver(){
+        Homepage.quiteDriver();
+    }
 
     @AfterClass(alwaysRun = true)
     public void cleanUp(ITestContext iTestContext) {

@@ -31,6 +31,7 @@ public class CheckoutPage  extends HomepagePage {
     private By lblCVVInputRequiredValidationError=By.xpath("//*[@id=\"advice-required-entry-braintree_cc_cid\"]");
     private By txtCreditCard=By.xpath("//*[@id=\"braintree_cc_number\"]");
     private By txtCVV=By.xpath("//*[@id=\"braintree_cc_cid\"]");
+    private By lblValidCCRequiredMessage=By.xpath("//*[@id=\"advice-validate-cc-number-braintree_cc_number\"]");
 
     public String getFirstName(){
         return getTextFromAttribute(txtFirstName);
@@ -108,6 +109,11 @@ public class CheckoutPage  extends HomepagePage {
     public String getInputRequiredFieldCVV(){
         syscoLabUI.sleep(2);
         return getLblText(lblCVVInputRequiredValidationError);
+    }
+
+    public String getValidCCRequiredErrorMessage(){
+        syscoLabUI.sleep(2);
+        return getLblText(lblValidCCRequiredMessage);
     }
 
     public String getLblText(By webElementLocation){

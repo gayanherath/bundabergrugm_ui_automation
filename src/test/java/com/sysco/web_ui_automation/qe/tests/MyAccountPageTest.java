@@ -6,6 +6,7 @@ import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.LoginFromHomepage;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -15,23 +16,19 @@ public class MyAccountPageTest extends TestBase {
 
     @BeforeClass
     public void init(ITestContext iTestContext) {
-
+        syscoLabQCenter.setModule("report_Gayan");
         iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
-    }
-
-    @BeforeClass
-    public void loadHomePage(){
+        syscoLabQCenter.setClassName(MyAccountPageTest.class.getName());
         Homepage.loadHomePage();
         AgeVerificationFromHomepage.enterValidRequiredAgeLevel("1","January","1991");
         Homepage.loadMyAccountPage();
-
         LoginFromHomepage.insertEmailAddress(Constants.USER_NAME);
         LoginFromHomepage.insertPassword(Constants.P_W);
         LoginFromHomepage.clickLoginButton();
     }
 
-    @Test(priority = 1)
-    public void testVerifyUserCanAddItemToCart() throws AWTException {
+    @Test(description = "TC-13",priority = 1)
+    public void testUserCanAddItemToCart() throws AWTException {
         MyAccount.clickCart();
         MyAccount.clearCart();
         RoyalLiqueurCategoryFromMyAccount.selectRoyalLiqiuorCategory();
@@ -48,8 +45,8 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-2",priority = 2)
-    public void testVerifyUserCanGoToShoppingCartPageClickingCheckout(){
+    @Test(description = "TC-14",priority = 2)
+    public void testUserCanGoToShoppingCartPageClickingCheckout(){
         LoginFromHomepage.refreshPage();
         MyAccount.clickCart();
         MyAccount.clickChechOutButton();
@@ -58,8 +55,8 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-3",priority = 3)
-    public void testVerifyUserCanGoToCheckoutPageClickingProceedToCheckOut(){
+    @Test(description = "TC-15",priority = 3)
+    public void testUserCanGoToCheckoutPageClickingProceedToCheckOut(){
         ShoppingCart.clickProceedToCheckOut();
 
         String pageTitle=Checkout.getPageTitle();
@@ -73,8 +70,8 @@ public class MyAccountPageTest extends TestBase {
 
     }
 
-    @Test(description = "TC-MyAccountPageTest-4",priority = 4)
-    public void testVerifyUserCanNotContinueWithoutMandatoryInputFieldsinCheckout(){
+    @Test(description = "TC-16",priority = 4)
+    public void testUserCanNotContinueWithoutMandatoryInputFieldsinCheckout(){
         Checkout.clearMandatoryFields();
         Checkout.clickContinueToDelivery();
 
@@ -96,8 +93,8 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-MyAccountPageTest-5",priority = 5)
-    public void testVerifyUserCanAddPostCodeWithAutoSuggestion() throws AWTException {
+    @Test(description = "TC-17",priority = 5)
+    public void testUserCanAddPostCodeWithAutoSuggestion() throws AWTException {
         Checkout.refreshBrowser();
         Checkout.clearPostCodeField();
         Checkout.enter2000AndSelectSecondOneFromSuggestionList();
@@ -108,8 +105,8 @@ public class MyAccountPageTest extends TestBase {
     }
 
 
-    @Test(description = "TC-MyAccountPageTest-6",priority = 6)
-    public void testVerifyUserCanGotoBillingAndShippingInfoWhenClickProceedToCheckout(){
+    @Test(description = "TC-18",priority = 6)
+    public void testUserCanGotoBillingAndShippingInfoWhenClickProceedToCheckout(){
         Checkout.clickContinueToDelivery();
         String getDeliverOptionsHeader=Checkout.getDeliveryOptionHeaderText();
         softAssert.assertEquals(getDeliverOptionsHeader,"DELIVERY OPTIONS","Invalid Header");
@@ -117,7 +114,7 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-MyAccountPageTest-7",priority = 7)
+    @Test(description = "TC-19",priority = 7)
     public void testUserIsNotAbleToProceedWithEmptyCCAndCVV(){
         Checkout.clickContinueToPayment();
         Checkout.clickCreditCardOption();
@@ -130,25 +127,51 @@ public class MyAccountPageTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-MyAccountPageTest-8",priority = 8)
+    @Test(description = "TC-20",priority = 8)
+    public void testUserIsNotAbleToProceedWithInvalidAnd8DigitCCInputAndEmptyCVV(){
+        Checkout.setCreditCardNumber("12345678");
+        Checkout.setCVV("");
+        Checkout.clickPurchaseMyOrder();
+
+        String validCCRequiredErrorMessage=Checkout.getValidRequiredCCErrorMessage();
+        softAssert.assertEquals(validCCRequiredErrorMessage,"Please enter a valid credit card number.","Invalid Error Message");
+        String inputRequiredErrorMessageCVV=Checkout.getInputRequiredFieldCVV();
+        softAssert.assertEquals(inputRequiredErrorMessageCVV,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        softAssert.assertAll();
+    }
+
+    @Test(description = "TC-21",priority = 9)
+    public void testUserIsNotAbleToProceedWithEmptyCCInputAndIncorrectCVV(){
+        Checkout.setCreditCardNumber("");
+        Checkout.setCVV("321");
+        Checkout.clickPurchaseMyOrder();
+
+        String inputRequiredErrorMessageCC=Checkout.getInputRequiredFieldCreditCard();
+        softAssert.assertEquals(inputRequiredErrorMessageCC,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        softAssert.assertAll();
+    }
+
+    @Test(description = "TC-22",priority = 10)
     public void testUserIsNotAbleToProceedWithInvalidAnd8DigitCCInputAndIncorrectCVV(){
         Checkout.setCreditCardNumber("12345678");
         Checkout.setCVV("321");
         Checkout.clickPurchaseMyOrder();
 
-        String inputRequiredErrorMessageCC=Checkout.getInputRequiredFieldCreditCard();
-        String inputRequiredErrorMessageCVV=Checkout.getInputRequiredFieldCVV();
-        softAssert.assertEquals(inputRequiredErrorMessageCC,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
-        softAssert.assertEquals(inputRequiredErrorMessageCVV,Constants.INPUT_REQUIRED_MESSAGE,"Invalid Error Message");
+        String validCCRequiredErrorMessage=Checkout.getValidRequiredCCErrorMessage();
+        softAssert.assertEquals(validCCRequiredErrorMessage,"Please enter a valid credit card number.","Invalid Error Message");
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-MyAccountPageTest-9",priority = 9)
+   @Test(description = "TC-23",priority = 11)
     public void testUserIsNotAbleToProceedWithInvalidAnd16DigitCCAndIncorrectCVV(){
+       Checkout.setCreditCardNumber("1234123412341234");
+       Checkout.setCVV("321");
+       Checkout.clickPurchaseMyOrder();
 
+       String validCCRequiredErrorMessage=Checkout.getValidRequiredCCErrorMessage();
+       softAssert.assertEquals(validCCRequiredErrorMessage,"Please enter a valid credit card number.","Invalid Error Message");
+       softAssert.assertAll();
     }
-
-
 
 
 }

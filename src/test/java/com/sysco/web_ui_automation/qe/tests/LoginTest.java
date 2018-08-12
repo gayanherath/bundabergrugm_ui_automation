@@ -13,16 +13,16 @@ public class LoginTest extends TestBase {
 
     @BeforeClass
     public void init(ITestContext iTestContext) {
+        syscoLabQCenter.setModule("report_Gayan");
         iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
-    }
+        syscoLabQCenter.setClassName(LoginTest.class.getName());
 
-    @BeforeClass
-    public void loadHomePage(){
         Homepage.loadHomePage();
         AgeVerificationFromHomepage.enterValidRequiredAgeLevel("1","January","1991");
     }
 
-    @Test(description = "TC-1",priority = 1)
+
+    @Test(description = "TC-6",priority = 1)
     public void testVerifyMyAccountPage(){
         Homepage.loadMyAccountPage();
 
@@ -45,7 +45,7 @@ public class LoginTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-2",priority = 2)
+    @Test(description = "TC-7",priority = 2)
     public void testVerifyErrorMessageForLoginAttemptWithNoCredentials(){
         LoginFromHomepage.clickLoginButton();
 
@@ -57,7 +57,7 @@ public class LoginTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-3",priority = 3)
+    @Test(description = "TC-8",priority = 3)
     public void testVerifyErrorMessageForInvalidEmailStructure(){
         LoginFromHomepage.refreshPage();
         LoginFromHomepage.insertEmailAddress("gayanherath");
@@ -73,8 +73,8 @@ public class LoginTest extends TestBase {
     }
 
 
-    @Test(description = "TC-4",priority = 4)
-    public void testVerifyWhenIncorrectUserNameWithCorrectPassword(){
+    @Test(description = "TC-9",priority = 4)
+    public void testVerifyErrorMessageWhenIncorrectUserNameWithCorrectPassword(){
         LoginFromHomepage.refreshPage();
         LoginFromHomepage.insertEmailAddress("gherath@gmail.com");
         LoginFromHomepage.insertPassword(Constants.P_W);
@@ -86,8 +86,8 @@ public class LoginTest extends TestBase {
 
     }
 
-    @Test(description = "TC-5",priority = 5)
-    public void testVerifyWhenCorrectUserNameWithIncorrectPassword(){
+    @Test(description = "TC-10",priority = 5)
+    public void testVerifyErrorMessageWhenCorrectUserNameWithIncorrectPassword(){
         LoginFromHomepage.refreshPage();
         LoginFromHomepage.insertEmailAddress(Constants.USER_NAME);
         LoginFromHomepage.insertPassword("incorrectPassword");
@@ -98,7 +98,7 @@ public class LoginTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-6",priority = 6)
+    @Test(description = "TC-11",priority = 6)
     public void testVerifyWhenBothIncorrectCredentialsGiveErrorMessage(){
         LoginFromHomepage.refreshPage();
         LoginFromHomepage.insertEmailAddress("gherath@gmail.com");
@@ -110,8 +110,8 @@ public class LoginTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(description = "TC-7",priority = 7)
-    public void testVerifyUserCanLoginWithValidUserNamePassword(){
+    @Test(description = "TC-12",priority = 7)
+    public void testUserCanLoginWithValidUserNameAndPassword(){
         LoginFromHomepage.refreshPage();
         LoginFromHomepage.insertEmailAddress(Constants.USER_NAME);
         LoginFromHomepage.insertPassword(Constants.P_W);

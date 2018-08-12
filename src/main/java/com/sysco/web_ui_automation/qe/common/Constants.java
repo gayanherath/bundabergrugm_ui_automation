@@ -1,6 +1,7 @@
 package com.sysco.web_ui_automation.qe.common;
 
 public class Constants {
+    private Constants(){}
     public static final String TEST_ENV = System.getProperty("test.env", "QA");
     public static final String TEST_RELEASE = System.getProperty("test.release", "report_Gayan");
     public static final String TEST_PROJECT = System.getProperty("test.project", "Java Based Web UI Automation");
@@ -16,7 +17,6 @@ public class Constants {
     public static final String INPUT_REQUIRED_MESSAGE="This is a required field.";
     public static final String INVALID_LOGIN_CREDENTIALS="Invalid login or password.";
     public static final String INAVLID_EMAIL_STRUCTURE_MESSAGE="Please enter a valid email address. For example johndoe@domain.com.";
-
     public static final String USER_NAME="williamjacob802@gmail.com";
     public static final String P_W="12345678";
 

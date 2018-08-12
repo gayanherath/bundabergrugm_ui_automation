@@ -4,6 +4,8 @@
     <test name="regression">
         <classes>
             <class name="com.sysco.web_ui_automation.qe.tests.AgeVerificationTest"/>
+            <class name="com.sysco.web_ui_automation.qe.tests.LoginTest"/>
+            <class name="com.sysco.web_ui_automation.qe.tests.MyAccountPageTest"/>
         </classes>
     </test>
 </suite>
