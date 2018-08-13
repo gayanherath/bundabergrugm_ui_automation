@@ -1,12 +1,12 @@
 package com.sysco.web_ui_automation.qe.tests;
 import com.sysco.web_ui_automation.qe.functions.myaccount.*;
 import com.sysco.web_ui_automation.qe.common.Constants;
-import com.sysco.web_ui_automation.qe.functions.homepage.AgeVerificationFromHomepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.LoginFromHomepage;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
 import com.syscolab.qe.core.reporting.SyscoLabListener;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -21,12 +21,6 @@ public class MyAccountPageTest extends TestBase {
         syscoLabQCenter.setModule("report_Gayan");
         iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
         syscoLabQCenter.setClassName(MyAccountPageTest.class.getName());
-        Homepage.loadHomePage();
-        AgeVerificationFromHomepage.enterValidRequiredAgeLevel("1","January","1991");
-        Homepage.loadMyAccountPage();
-        LoginFromHomepage.insertEmailAddress(Constants.USER_NAME);
-        LoginFromHomepage.insertPassword(Constants.P_W);
-        LoginFromHomepage.clickLoginButton();
     }
 
     @Test(description = "TC-13",priority = 1)
@@ -173,6 +167,11 @@ public class MyAccountPageTest extends TestBase {
        String validCCRequiredErrorMessage=Checkout.getValidRequiredCCErrorMessage();
        softAssert.assertEquals(validCCRequiredErrorMessage,"Please enter a valid credit card number.","Invalid Error Message");
        softAssert.assertAll();
+    }
+
+    @AfterClass
+    public void quitDriver(){
+        Homepage.quiteDriver();
     }
 
 

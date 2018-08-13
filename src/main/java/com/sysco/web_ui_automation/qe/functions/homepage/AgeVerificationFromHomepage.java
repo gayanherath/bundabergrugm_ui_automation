@@ -3,6 +3,7 @@ package com.sysco.web_ui_automation.qe.functions.homepage;
 import com.sysco.web_ui_automation.qe.pages.homepage.AgeVerificationFromHomepagePage;
 
 public class AgeVerificationFromHomepage {
+    private AgeVerificationFromHomepage(){}
 
     private static AgeVerificationFromHomepagePage ageVerificationFromHomepagePage = new AgeVerificationFromHomepagePage();
 

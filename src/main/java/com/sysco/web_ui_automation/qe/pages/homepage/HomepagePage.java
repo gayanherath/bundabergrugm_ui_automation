@@ -1,11 +1,10 @@
 package com.sysco.web_ui_automation.qe.pages.homepage;
 
-import com.sysco.web_ui_automation.qe.common.Constants;
 import com.syscolab.qe.core.ui.SyscoLabUI;
 import com.syscolab.qe.core.ui.web.SyscoLabWUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.WebElement;
+
 
 
 public class HomepagePage {

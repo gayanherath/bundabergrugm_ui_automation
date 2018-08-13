@@ -1,11 +1,9 @@
 package com.sysco.web_ui_automation.qe.utils;
 
-import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.syscolab.qe.core.reporting.SyscoLabListener;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
 import com.sysco.web_ui_automation.qe.common.Constants;
-import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -21,20 +19,17 @@ public class TestBase {
 
     @BeforeClass
     public void init() {
-
         testListeners = new SyscoLabListener();
         syscoLabQCenter = new SyscoLabQCenter();
+        this.softAssert = new SoftAssert();
     }
 
     @BeforeTest
     public void beforeTest() {
         System.out.println("Test Running " + this.getClass().toString());
-        this.softAssert = new SoftAssert();
+
     }
-    @AfterClass
-    public void quitDriver(){
-        Homepage.quiteDriver();
-    }
+
 
     @AfterClass(alwaysRun = true)
     public void cleanUp(ITestContext iTestContext) {
