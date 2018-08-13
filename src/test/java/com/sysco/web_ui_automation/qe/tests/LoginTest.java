@@ -52,8 +52,8 @@ public class LoginTest extends TestBase {
         String emailRequiredMessage=LoginFromHomepage.getEmailRequiredMessage();
         String passwordRequiredMessage=LoginFromHomepage.getPasswordRequiredMessage();
 
-        softAssert.assertEquals(emailRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Inproper Error Message");
-        softAssert.assertEquals(passwordRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Inproper Error Message");
+        softAssert.assertEquals(emailRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Improper Error Message");
+        softAssert.assertEquals(passwordRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Improper Error Message");
         softAssert.assertAll();
     }
 
@@ -66,8 +66,8 @@ public class LoginTest extends TestBase {
         String invalidEmailStructureMessage=LoginFromHomepage.getInvalidEmailStructureMessage();
         String passwordRequiredMessage=LoginFromHomepage.getPasswordRequiredMessage();
 
-        softAssert.assertEquals(invalidEmailStructureMessage,Constants.INAVLID_EMAIL_STRUCTURE_MESSAGE, "Inproper Error Message");
-        softAssert.assertEquals(passwordRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Inproper Error Message");
+        softAssert.assertEquals(invalidEmailStructureMessage,Constants.INAVLID_EMAIL_STRUCTURE_MESSAGE, "Improper Error Message");
+        softAssert.assertEquals(passwordRequiredMessage,Constants.INPUT_REQUIRED_MESSAGE, "Improper Error Message");
         softAssert.assertAll();
 
     }
@@ -81,7 +81,7 @@ public class LoginTest extends TestBase {
         LoginFromHomepage.clickLoginButton();
 
         String invalidCredentialMessage=LoginFromHomepage.getInvalidCredentialMessage();
-        softAssert.assertEquals(invalidCredentialMessage,Constants.INVALID_LOGIN_CREDENTIALS, "Inproper Error Message");
+        softAssert.assertEquals(invalidCredentialMessage,Constants.INVALID_LOGIN_CREDENTIALS, "Improper Error Message");
         softAssert.assertAll();
 
     }
@@ -94,7 +94,7 @@ public class LoginTest extends TestBase {
         LoginFromHomepage.clickLoginButton();
 
         String invalidCredentialMessage=LoginFromHomepage.getInvalidCredentialMessage();
-        softAssert.assertEquals(invalidCredentialMessage,Constants.INVALID_LOGIN_CREDENTIALS, "Inproper Error Message");
+        softAssert.assertEquals(invalidCredentialMessage,Constants.INVALID_LOGIN_CREDENTIALS, "Improper Error Message");
         softAssert.assertAll();
     }
 
@@ -106,7 +106,7 @@ public class LoginTest extends TestBase {
         LoginFromHomepage.clickLoginButton();
 
         String invalidCredentialMessage=LoginFromHomepage.getInvalidCredentialMessage();
-        softAssert.assertEquals(invalidCredentialMessage,Constants.INVALID_LOGIN_CREDENTIALS, "Inproper Error Message");
+        softAssert.assertEquals(invalidCredentialMessage,Constants.INVALID_LOGIN_CREDENTIALS, "Improper Error Message");
         softAssert.assertAll();
     }
 
