@@ -1,7 +1,6 @@
 package com.sysco.web_ui_automation.qe.tests;
 
 import com.sysco.web_ui_automation.qe.common.Constants;
-import com.sysco.web_ui_automation.qe.functions.homepage.AgeVerificationFromHomepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.Homepage;
 import com.sysco.web_ui_automation.qe.functions.homepage.LoginFromHomepage;
 import com.sysco.web_ui_automation.qe.utils.TestBase;
@@ -11,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
 @Listeners(SyscoLabListener.class)
 public class LoginTest extends TestBase {
 
@@ -19,9 +19,6 @@ public class LoginTest extends TestBase {
         syscoLabQCenter.setModule("report_Gayan");
         iTestContext.setAttribute("feature", "Bundabergrum - Checkout");
         syscoLabQCenter.setClassName(LoginTest.class.getName());
-
-        Homepage.loadHomePage();
-        AgeVerificationFromHomepage.enterValidRequiredAgeLevel("1","January","1991");
     }
 
 

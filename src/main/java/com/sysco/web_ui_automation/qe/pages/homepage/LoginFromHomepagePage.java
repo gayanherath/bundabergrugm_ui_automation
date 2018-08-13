@@ -81,10 +81,6 @@ public class LoginFromHomepagePage extends HomepagePage{
         syscoLabUI.sendKeys(txtPassword,password);
     }
 
-    public void refreshBrowserForSlowCase(){
-        syscoLabUI.refreshBrowser();
-        syscoLabUI.sleep(2);
-    }
 
     public String getUserName(){
         String userName=syscoLabUI.getText(lblUserName);
